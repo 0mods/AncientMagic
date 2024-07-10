@@ -10,17 +10,20 @@
 
 package team._0mods.aeternus.common.init.registry
 
+import net.minecraft.core.registries.BuiltInRegistries
 import net.minecraft.core.registries.Registries
 import net.minecraft.network.chat.Component
 import net.minecraft.resources.ResourceKey
 import net.minecraft.world.item.ArmorItem
 import net.minecraft.world.item.BucketItem
 import net.minecraft.world.item.Item
+import net.minecraft.world.item.ItemStack
 import net.minecraft.world.level.block.SoundType
 import net.minecraft.world.level.block.state.BlockBehaviour
 import net.minecraft.world.level.material.Fluids
 import net.minecraft.world.level.material.PushReaction
 import ru.hollowhorizon.hc.common.registry.HollowRegistry
+import ru.hollowhorizon.hc.common.registry.HollowTabCreator
 import team._0mods.aeternus.api.block.PublicLiquidBlock
 import team._0mods.aeternus.api.util.aRl
 import team._0mods.aeternus.common.ModId
@@ -33,37 +36,17 @@ import team._0mods.aeternus.common.item.KnowledgeBook
 @Suppress("UnstableApiUsage")
 object AeternusRegsitry: HollowRegistry() {
     /* TABS */
-//    val aeternusTab = tabs.register("aeternus_tab") {
-//        CreativeTabRegistry.create {
-//            it.title(tab("misc"))
-//                .displayItems { _, o ->
-//                    items.registrar.entrySet().forEach { e ->
-//                        val i = e.value
-//
-//                        if (i is ITabbed) o.accept(ItemStack(i))
-//                    }
-//                }
-//                .icon { ItemStack(knowledgeBook.get()) }
-//        }
-//    }
-//
-//    val spellTab = tabs.register("spell") {
-//        CreativeTabRegistry.create {
-//            it.title(tab("spells"))
-//                .icon { ItemStack(emptyScroll.get()) }
-//                .displayItems { _, output ->
-//                    SpellRegistryImpl.scrolls.forEach { s ->
-//                        val spell = s.spell
-//
-//                        if (!spell.isHidden) output.accept(ItemStack(s))
-//                    }
-//
-//                    output.accept(ItemStack(emptyScroll.get()))
-//                }
-//
-//                .icon { ItemStack(emptyScroll.get()) }
-//        }
-//    }
+    val aeternusTab by register("aeternus_tab".aRl, false, BuiltInRegistries.CREATIVE_MODE_TAB) {
+        HollowTabCreator.create {
+            title(tab("misc")).icon { ItemStack(knowledgeBook.get()) }
+        }
+    }
+
+    val spellTab by register("spell_tab".aRl, false, BuiltInRegistries.CREATIVE_MODE_TAB) {
+        HollowTabCreator.create {
+            title(tab("spells")).icon { ItemStack(emptyScroll.get()) }
+        }
+    }
 
     /* ITEMS */
     // MISC

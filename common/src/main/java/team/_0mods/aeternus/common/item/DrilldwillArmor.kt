@@ -21,6 +21,7 @@ import net.minecraft.world.item.ItemStack
 import net.minecraft.world.level.portal.DimensionTransition
 import ru.hollowhorizon.hc.common.events.EventBus
 import ru.hollowhorizon.hc.common.events.tick.TickEvent
+import ru.hollowhorizon.hc.common.handlers.tab
 import team._0mods.aeternus.api.item.ArmorMaterialCreation
 import team._0mods.aeternus.api.item.ArmorMaterialCreation.Companion.builder
 import team._0mods.aeternus.api.item.ITabbed
@@ -33,6 +34,7 @@ class DrilldwillArmor(type: Type, properties: Properties) : ArmorItem(material, 
 
     init {
         EventBus.register(this::onPlayerTick)
+        this.tab(AeternusRegsitry.aeternusTab.get())
     }
 
     companion object {

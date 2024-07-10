@@ -10,6 +10,7 @@
 
 package team._0mods.aeternus
 
+import net.minecraft.world.item.CreativeModeTab
 import net.minecraftforge.fml.common.Mod
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext
@@ -22,6 +23,8 @@ import team._0mods.aeternus.common.commonInit
 class AeternusForge {
     init {
         val bus = FMLJavaModLoadingContext.get().modEventBus
+
+        val creativeTab = CreativeModeTab.builder()
 
         commonInit()
         if (FMLEnvironment.dist.isClient)

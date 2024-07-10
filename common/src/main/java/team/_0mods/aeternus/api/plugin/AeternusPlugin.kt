@@ -21,7 +21,7 @@ import team._0mods.aeternus.api.registry.SpellRegistry
 @Retention(AnnotationRetention.RUNTIME)
 @Target(AnnotationTarget.CLASS)
 @MustBeDocumented
-annotation class AeternusPluginInit(
+annotation class AeternusPluginRegistry(
     /**
      * Plugin's mod id for registry initialization
      *
@@ -32,7 +32,7 @@ annotation class AeternusPluginInit(
 
 /**
  * Plugin base interface.
- * For registry your plugin use [AeternusPluginInit] with plugin class
+ * For registry your plugin use [AeternusPluginRegistry] with plugin class
  *
  * For a more stable plugin, I suggest using Kotlin, not Java or any other JVM-like language
  */

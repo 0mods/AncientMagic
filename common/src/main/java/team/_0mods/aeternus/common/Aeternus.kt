@@ -21,12 +21,11 @@ import team._0mods.aeternus.api.util.debugIfEnabled
 import team._0mods.aeternus.common.init.config.AeternusClientConfig
 import team._0mods.aeternus.common.init.config.AeternusCommonConfig
 import team._0mods.aeternus.common.init.registry.AeternusRegsitry
-import team._0mods.aeternus.reflect.AeternusAnnotationProcessor
 
 const val ModId = "aeternus"
 const val ModName = "Aeternus"
 
-@JvmField val LOGGER: Logger = LoggerFactory.getLogger("Aeternus") //const
+@JvmField val LOGGER: Logger = LoggerFactory.getLogger(ModName) //const
 
 lateinit var commonConfigInstance: ConfigInstance<AeternusCommonConfig> private set
 lateinit var clientConfigInstance: ConfigInstance<AeternusClientConfig> private set
@@ -44,7 +43,6 @@ fun commonInit() {
     LOGGER.debugIfEnabled("DEBUG MODE IS ACTIVATED")
 
     AeternusRegsitry.init()
-    AeternusAnnotationProcessor.start()
 }
 
 fun clientInit() {

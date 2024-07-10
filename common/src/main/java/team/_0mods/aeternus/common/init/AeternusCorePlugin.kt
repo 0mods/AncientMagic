@@ -11,13 +11,13 @@
 package team._0mods.aeternus.common.init
 
 import team._0mods.aeternus.api.plugin.AeternusPlugin
-import team._0mods.aeternus.api.plugin.AeternusPluginInit
+import team._0mods.aeternus.api.plugin.AeternusPluginRegistry
 import team._0mods.aeternus.api.registry.ResearchRegistry
 import team._0mods.aeternus.api.registry.ResearchTriggerRegistry
 import team._0mods.aeternus.common.LOGGER
 import team._0mods.aeternus.common.ModId
 
-@AeternusPluginInit(ModId)
+@AeternusPluginRegistry(ModId)
 class AeternusCorePlugin: AeternusPlugin {
     companion object {
         lateinit var researchRegistry: ResearchRegistry

@@ -11,6 +11,11 @@
 package team._0mods.aeternus.common.helper
 
 import net.minecraft.world.item.Item
-import team._0mods.aeternus.api.item.ITabbed
+import ru.hollowhorizon.hc.common.handlers.tab
+import team._0mods.aeternus.common.init.registry.AeternusRegsitry
 
-open class AeternusItem(props: Properties.() -> Unit = {}): Item(Properties().apply(props)), ITabbed
+open class AeternusItem(props: Properties.() -> Unit = {}): Item(Properties().apply(props)) {
+    init {
+        this.tab(AeternusRegsitry.aeternusTab.get())
+    }
+}
