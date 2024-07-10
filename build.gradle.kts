@@ -1,13 +1,10 @@
 @file:Suppress("UNCHECKED_CAST")
 
-import groovy.lang.Closure
-import io.github.pacifistmc.forgix.plugin.ForgixMergeExtension.*
 import net.fabricmc.loom.api.LoomGradleExtensionAPI
 
 val minecraftVersion: String by project
 val modName: String by project
 val modAuthor: String by project
-val parchmentMCVersion: String by project
 val parchmentVersion: String by project
 val modId: String by project
 val modGroup: String by project
@@ -32,7 +29,6 @@ plugins {
     `maven-publish`
     id("architectury-plugin") version "3.4-SNAPSHOT"
     id("dev.architectury.loom") version "1.6-SNAPSHOT" apply false
-    id("io.github.pacifistmc.forgix") version "1.2.9"
     id("com.modrinth.minotaur") version "2.+"
     kotlin("jvm")
     kotlin("plugin.serialization")
@@ -40,51 +36,6 @@ plugins {
 
 architectury {
     minecraft = minecraftVersion
-}
-
-forgix {
-    val fullPath = "$modGroup.$modId"
-    group = fullPath
-    mergedJarName = "$modName-${minecraftVersion}_$modVersion.jar"
-
-    outputDir = "build/libs"
-
-    when (project) {
-        findProject(":fabric") -> {
-            val proj = findProject(":fabric")!!
-
-            val fabricClosure = closureOf<FabricContainer> {
-                jarLocation = "build/libs/${proj.base.archivesName.get()}.jar"
-            } as Closure<FabricContainer>
-            fabric(fabricClosure)
-        }
-
-        findProject(":forge") -> {
-            val proj = findProject(":forge")!!
-
-            val forgeClosure = closureOf<ForgeContainer> {
-                jarLocation = "build/libs/${proj.base.archivesName.get()}.jar"
-
-                mixin("".mixin)
-                mixin("forgelike".mixin)
-                mixin("forge".mixin)
-            } as Closure<ForgeContainer>
-            forge(forgeClosure)
-        }
-
-        findProject(":neoforge") -> {
-            val proj = findProject(":neoforge")!!
-
-            val neoClosure = closureOf<NeoForgeContainer> {
-                jarLocation = "build/libs/${proj.base.archivesName.get()}.jar"
-                mixin("".mixin)
-                mixin("forgelike".mixin)
-                mixin("neo".mixin)
-            } as Closure<NeoForgeContainer>
-
-            neoforge(neoClosure)
-        }
-    }
 }
 
 subprojects {
@@ -129,12 +80,12 @@ subprojects {
         @Suppress("UnstableApiUsage")
         "mappings"(loom.layered {
             this.officialMojangMappings()
-//            parchment("org.parchmentmc.data:parchment-${parchmentMCVersion}:${parchmentVersion}@zip")
+            parchment("org.parchmentmc.data:parchment-${minecraftVersion}:${parchmentVersion}@zip")
         })
 
         if (project != findProject(":common")) {
-            "include"("dev.architectury:architectury-injectables:1.0.10")
-            "include"("team._0mods:KotlinExtras:kotlin-2.0.0")
+            if (project != findProject(":forge") && project != findProject(":neoforge")) "include"("team.0mods:KotlinExtras:1.3")
+            else "include"("thedarkcolour:kotlinforforge:5.3.0")
             "include"("io.github.classgraph:classgraph:4.8.173")
         }
     }
@@ -207,9 +158,6 @@ allprojects {
         implementation("io.github.spair:imgui-java-natives-windows:$imguiVersion")
         implementation("io.github.spair:imgui-java-natives-linux:$imguiVersion")
         implementation("io.github.spair:imgui-java-natives-macos:$imguiVersion")
-
-        // Effekseer Swig
-        implementation("effekseer.swig:Swig:1.0")
 
         // ClassGraph
         implementation("io.github.classgraph:classgraph:4.8.173")

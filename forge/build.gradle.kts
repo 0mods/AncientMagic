@@ -43,7 +43,7 @@ dependencies {
 
     forge("net.minecraftforge:forge:$minecraftVersion-$forgeVersion")
 
-    modImplementation("ru.hollowhorizon:hollowcore:1.21-1.0.0")
+    modImplementation("ru.hollowhorizon:HollowCore-forge-1.21:1.21-1.0.0")
 
     common(project(path = ":common", configuration = "namedElements")) { isTransitive = false }
     common(project(path = ":forgelike", configuration = "namedElements")) { isTransitive = false }
@@ -55,8 +55,6 @@ tasks {
     shadowJar {
         configurations = listOf(shadowCommon)
         archiveClassifier = "dev-shadow"
-        relocate("team._0mods.aeternus.platformredirect", "team._0mods.aeternus.forge")
-        relocate("team._0mods.aeternus.service", "team._0mods.aeternus.forge.service")
     }
 
     remapJar {

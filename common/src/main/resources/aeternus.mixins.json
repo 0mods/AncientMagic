@@ -8,8 +8,8 @@
     "PlayerMixin",
     "ResourceLocationMixin",
     "accessors.ListTagAccessor",
-    "entity.AnimalMixin",
-    "item.ItemMixin"
+    "team._0mods.aeternus.mixin.entity.AnimalMixin",
+    "team._0mods.aeternus.mixin.item.ItemMixin"
   ],
   "client": [
     "accessors.client.ScreenAccessor",

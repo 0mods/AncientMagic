@@ -36,7 +36,7 @@ dependencies {
     val serializationVersion: String by project
 
     neoForge("net.neoforged:neoforge:$neoVersion")
-    modImplementation("ru.hollowhorizon:hollowcore:1.21-1.0.0")
+    modImplementation("ru.hollowhorizon:HollowCore-neoforge:1.21-1.0.0")
 
     common(project(path = ":common", configuration = "namedElements")) { isTransitive = false }
     forgeLike(project(path = ":forgelike", configuration = "namedElements"))
@@ -48,8 +48,6 @@ tasks {
     shadowJar {
         configurations = listOf(shadowCommon)
         archiveClassifier = "dev-shadow"
-        relocate("team._0mods.aeternus.platformredirect", "team._0mods.aeternus.neoforge")
-        relocate("team._0mods.aeternus.service", "team._0mods.aeternus.neoforge.service")
     }
 
     remapJar {

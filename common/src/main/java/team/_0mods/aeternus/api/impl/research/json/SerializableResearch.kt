@@ -13,6 +13,7 @@ package team._0mods.aeternus.api.impl.research.json
 import kotlinx.serialization.Required
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
+import ru.hollowhorizon.hc.client.utils.mcTranslate
 import team._0mods.aeternus.api.magic.research.Research
 import team._0mods.aeternus.api.magic.research.ResearchSettings
 import team._0mods.aeternus.api.magic.research.book.ResearchAlignment
@@ -21,8 +22,7 @@ import team._0mods.aeternus.api.magic.research.book.ResearchShape
 import team._0mods.aeternus.api.magic.research.create
 import team._0mods.aeternus.api.magic.research.of
 import team._0mods.aeternus.api.util.toAPIRLList
-import team._0mods.aeternus.platformredirect.common.init.AeternusCorePlugin
-import team._0mods.aeternus.platformredirect.api.util.textTranslate
+import team._0mods.aeternus.common.init.AeternusCorePlugin
 
 @Serializable
 data class JSONResearch(
@@ -53,8 +53,8 @@ data class JSONBookMetadata(
     @SerialName("shape") val shapeId: Int = 0
 ) {
     val asBookMetadata: ResearchBookMetadata = ResearchBookMetadata.of(
-        name.textTranslate,
-        description.textTranslate,
+        name.mcTranslate,
+        description.mcTranslate,
         texture,
         inBookPosition.x to inBookPosition.y,
         ResearchAlignment.getById(alignId),

@@ -10,39 +10,39 @@
 
 package team._0mods.aeternus.api.impl.registry
 
+import net.minecraft.resources.ResourceLocation
+import ru.hollowhorizon.hc.client.utils.rl
 import team._0mods.aeternus.api.magic.research.trigger.ResearchTrigger
 import team._0mods.aeternus.api.registry.ResearchTriggerRegistry
 import team._0mods.aeternus.api.util.fromMapToListByList
-import team._0mods.aeternus.api.util.mcemulate.MCResourceLocation
-import team._0mods.aeternus.api.util.mcemulate.createRL
 import team._0mods.aeternus.api.util.noneMatchKey
-import team._0mods.aeternus.platformredirect.common.LOGGER
+import team._0mods.aeternus.common.LOGGER
 import team._0mods.aeternus.service.PlatformHelper
 
 class ResearchTriggerRegistryImpl(private val modId: String): ResearchTriggerRegistry {
     companion object {
         @JvmStatic
-        private val triggerMap: MutableMap<MCResourceLocation, ResearchTrigger> = linkedMapOf()
+        private val triggerMap: MutableMap<ResourceLocation, ResearchTrigger> = linkedMapOf()
     }
 
     override val triggers: List<ResearchTrigger>
         get() = triggerMap.values.toList()
 
-    override fun getById(id: MCResourceLocation): ResearchTrigger? =
+    override fun getById(id: ResourceLocation): ResearchTrigger? =
         triggerMap[id]
 
     override fun register(id: String, research: ResearchTrigger) {
-        val resLocId = MCResourceLocation.createRL(modId, id)
+        val resLocId = "$modId:$id".rl
 
         if (triggerMap.noneMatchKey(resLocId)) triggerMap[resLocId] = research
         else warn(resLocId)
     }
 
-    override fun getByIdList(id: List<MCResourceLocation>): List<ResearchTrigger> = triggerMap.fromMapToListByList(id)
+    override fun getByIdList(id: List<ResourceLocation>): List<ResearchTrigger> = triggerMap.fromMapToListByList(id)
 
-    private fun warn(id: MCResourceLocation) = LOGGER.warn(
+    private fun warn(id: ResourceLocation) = LOGGER.warn(
         "Oh... Mod: {} trying to register a research trigger with id {}, because research with this id is already registered! Skipping...",
-        PlatformHelper.getModNameByModId(id.rlNamespace),
+        PlatformHelper.getModNameByModId(id.namespace),
         id
     )
 }

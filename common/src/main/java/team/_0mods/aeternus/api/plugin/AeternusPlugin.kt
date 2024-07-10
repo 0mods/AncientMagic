@@ -10,8 +10,9 @@
 
 package team._0mods.aeternus.api.plugin
 
-import org.jetbrains.annotations.ApiStatus
-import team._0mods.aeternus.api.registry.*
+import team._0mods.aeternus.api.registry.ResearchRegistry
+import team._0mods.aeternus.api.registry.ResearchTriggerRegistry
+import team._0mods.aeternus.api.registry.SpellRegistry
 
 /**
  * Starts registration of the current plugin.
@@ -39,14 +40,14 @@ interface AeternusPlugin {
     /**
      * This is a research registration.
      *
-     * @param [reg] returns [ResearchRegistry] in order to register research
+     * @param [reg] returns [ResearchRegistry] to register research
      */
     fun registerResearch(reg: ResearchRegistry) {}
 
     /**
      * This is a research trigger registration.
      *
-     * @param [reg] returns [ResearchTriggerRegistry] in order to register research trigger
+     * @param [reg] returns [ResearchTriggerRegistry] to register research trigger
      */
     fun registerResearchTriggers(reg: ResearchTriggerRegistry) {}
 
@@ -57,15 +58,15 @@ interface AeternusPlugin {
      */
     fun registerSpells(reg: SpellRegistry) {}
 
-    /**
-     * This is a material registration
-     *
-     * @param [reg] returns [MaterialRegistry] in order to register material
-     */
-    @ApiStatus.NonExtendable
-    @ApiStatus.Internal
-    @ApiStatus.AvailableSince("nan")
-    fun registerMaterial(reg: MaterialRegistry) {
-        throw IllegalAccessException("This function is not available in current version. Please, wait realisation!")
-    }
+//    /**
+//     * This is a material registration
+//     *
+//     * @param [reg] returns [MaterialRegistry] to register material
+//     */
+//    @ApiStatus.NonExtendable
+//    @ApiStatus.Internal
+//    @ApiStatus.AvailableSince("nan")
+//    fun registerMaterial(reg: MaterialRegistry) {
+//        throw IllegalAccessException("This function is not available in current version. Please, wait realisation!")
+//    }
 }

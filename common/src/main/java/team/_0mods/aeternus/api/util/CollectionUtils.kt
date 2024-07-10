@@ -13,9 +13,9 @@
 package team._0mods.aeternus.api.util
 
 import com.google.common.collect.Multimap
+import net.minecraft.resources.ResourceLocation
 import org.jetbrains.annotations.ApiStatus
-import team._0mods.aeternus.api.util.mcemulate.MCResourceLocation
-import team._0mods.aeternus.api.util.mcemulate.createRL
+import ru.hollowhorizon.hc.client.utils.rl
 
 @ApiStatus.Experimental
 fun <K, V> Map<K, V>.revert(): Map<V, K> {
@@ -32,12 +32,12 @@ fun <K, V> Map<K, V>.revert(): Map<V, K> {
 }
 
 @get:ApiStatus.Experimental
-val List<String>.toAPIRLList: List<MCResourceLocation>
+val List<String>.toAPIRLList: List<ResourceLocation>
     get() {
-        val rlList = mutableListOf<MCResourceLocation>()
+        val rlList = mutableListOf<ResourceLocation>()
         for (id in this) {
-            if (rlList.stream().noneMatch { it == MCResourceLocation.createRL(id) })
-                rlList.add(MCResourceLocation.createRL(id))
+            if (rlList.stream().noneMatch { it == id.rl })
+                rlList.add(id.rl)
             else continue
         }
         return rlList.toList()

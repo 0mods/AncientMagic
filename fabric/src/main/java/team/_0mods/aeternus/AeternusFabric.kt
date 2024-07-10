@@ -12,9 +12,9 @@
 
 package team._0mods.aeternus
 
-import team._0mods.aeternus.platformredirect.common.LOGGER
-import team._0mods.aeternus.platformredirect.common.clientInit
-import team._0mods.aeternus.platformredirect.common.commonInit
+import team._0mods.aeternus.common.LOGGER
+import team._0mods.aeternus.common.clientInit
+import team._0mods.aeternus.common.commonInit
 
 fun startCommon() {
     LOGGER.info("Hello Minecraft world from Common side!")

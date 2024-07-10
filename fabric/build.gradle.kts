@@ -42,7 +42,7 @@ dependencies {
     modImplementation("net.fabricmc:fabric-loader:$fabricLoaderVersion") { include(this) }
     modImplementation("net.fabricmc.fabric-api:fabric-api:$fabricVersion+${project.properties["minecraftVersion"].toString()}") { include(this) }
 
-    modImplementation("ru.hollowhorizon:hollowcore:1.21-1.0.0")
+    modImplementation("ru.hollowhorizon:HollowCore-fabric:1.21-1.0.0")
 
     common(project(path = ":common", configuration = "namedElements")) { isTransitive = false }
     shadowBundle(project(path = ":common", configuration = "transformProductionFabric"))
@@ -60,8 +60,6 @@ tasks {
     shadowJar {
         configurations = listOf(shadowBundle)
         archiveClassifier = "dev-shadow"
-        relocate("team._0mods.aeternus.platformredirect", "team._0mods.aeternus.fabric")
-        relocate("team._0mods.aeternus.service", "team._0mods.aeternus.fabric.service")
     }
 
     remapJar {

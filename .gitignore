@@ -118,11 +118,10 @@ run/
 !gradle-wrapper.jar
 runs/
 
-!common/build/libs/aeternus.*.jar
-!common/build/libs/aeternus-alpha.*.jar
-!common/build/libs/aeternus-beta.*.jar
-!common/build/libs/aeternus-snapshot.*.jar
-common/build/libs/aeternus.*-*.jar
-common/build/libs/aeternus-alpha.*-*.jar
-common/build/libs/aeternus-beta.*-*.jar
-common/build/libs/aeternus-snapshot.*-*.jar
+.jar.*
+
+!neoforge/libs/*.jar
+!forgelike/libs/*.jar
+!forge/libs/*.jar
+!fabric/libs/*.jar
+!common/libs/*.jar

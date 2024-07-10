@@ -16,10 +16,10 @@ import net.neoforged.bus.api.SubscribeEvent
 import net.neoforged.fml.common.EventBusSubscriber
 import net.neoforged.neoforge.capabilities.EntityCapability
 import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent
+import ru.hollowhorizon.hc.client.utils.rl
 import team._0mods.aeternus.api.magic.PlayerEtherium
 import team._0mods.aeternus.api.magic.research.player.PlayerResearch
-import team._0mods.aeternus.platformredirect.common.ModId
-import team._0mods.aeternus.platformredirect.api.util.rl
+import team._0mods.aeternus.common.ModId
 
 @EventBusSubscriber(modid = ModId, bus = EventBusSubscriber.Bus.MOD)
 object ANCapabilities {
