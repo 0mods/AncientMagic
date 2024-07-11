@@ -26,7 +26,7 @@ import team._0mods.aeternus.api.item.ArmorMaterialCreation
 import team._0mods.aeternus.api.item.ArmorMaterialCreation.Companion.builder
 import team._0mods.aeternus.api.item.ITabbed
 import team._0mods.aeternus.api.util.*
-import team._0mods.aeternus.common.init.registry.AeternusRegsitry
+import team._0mods.aeternus.common.init.registry.AeternusRegistry
 
 class DrilldwillArmor(type: Type, properties: Properties) : ArmorItem(material, type, properties), ITabbed {
     private var runTime = 0
@@ -34,19 +34,19 @@ class DrilldwillArmor(type: Type, properties: Properties) : ArmorItem(material, 
 
     init {
         EventBus.register(this::onPlayerTick)
-        this.tab(AeternusRegsitry.aeternusTab.get())
+        this.tab(AeternusRegistry.aeternusTab.get())
     }
 
     companion object {
         private val material = ArmorMaterialCreation.builder("drilldwill".aRl)
             .fullDef(3, 8, 6, 3)
-            .ingredient(AeternusRegsitry.drilldwill.get())
+            .ingredient(AeternusRegistry.drilldwill.get())
             .knockback(0.5F)
             .toughness(3.5F)
             .build
     }
 
-    override fun getName(stack: ItemStack): Component = type.generateArmorTranslateByParent(AeternusRegsitry.drilldwill.get())
+    override fun getName(stack: ItemStack): Component = type.generateArmorTranslateByParent(AeternusRegistry.drilldwill.get())
 
     fun onPlayerTick(e: TickEvent.Entity) {
         val slots = listOf(EquipmentSlot.HEAD, EquipmentSlot.CHEST, EquipmentSlot.LEGS, EquipmentSlot.FEET)

@@ -23,8 +23,8 @@ import net.minecraft.world.level.block.state.BlockBehaviour
 import net.minecraft.world.level.material.Fluids
 import net.minecraft.world.level.material.PushReaction
 import ru.hollowhorizon.hc.common.registry.HollowRegistry
-import ru.hollowhorizon.hc.common.registry.HollowTabCreator
 import team._0mods.aeternus.api.block.PublicLiquidBlock
+import team._0mods.aeternus.api.tab.AeternusTabCreator
 import team._0mods.aeternus.api.util.aRl
 import team._0mods.aeternus.common.ModId
 import team._0mods.aeternus.common.fluid.LiquidEtherium
@@ -33,17 +33,16 @@ import team._0mods.aeternus.common.item.DrilldwillArmor
 import team._0mods.aeternus.common.item.EmptyScroll
 import team._0mods.aeternus.common.item.KnowledgeBook
 
-@Suppress("UnstableApiUsage")
-object AeternusRegsitry: HollowRegistry() {
+object AeternusRegistry: HollowRegistry() {
     /* TABS */
     val aeternusTab by register("aeternus_tab".aRl, false, BuiltInRegistries.CREATIVE_MODE_TAB) {
-        HollowTabCreator.create {
+        AeternusTabCreator.create {
             title(tab("misc")).icon { ItemStack(knowledgeBook.get()) }
         }
     }
 
     val spellTab by register("spell_tab".aRl, false, BuiltInRegistries.CREATIVE_MODE_TAB) {
-        HollowTabCreator.create {
+        AeternusTabCreator.create {
             title(tab("spells")).icon { ItemStack(emptyScroll.get()) }
         }
     }

@@ -15,6 +15,7 @@ import net.minecraftforge.fml.common.Mod
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext
 import net.minecraftforge.fml.loading.FMLEnvironment
+import team._0mods.aeternus.api.tab._tabCallback
 import team._0mods.aeternus.common.ModId
 import team._0mods.aeternus.common.clientInit
 import team._0mods.aeternus.common.commonInit
@@ -25,6 +26,10 @@ class AeternusForge {
         val bus = FMLJavaModLoadingContext.get().modEventBus
 
         val creativeTab = CreativeModeTab.builder()
+        _tabCallback = {
+            creativeTab.apply(it)
+            creativeTab.build()
+        }
 
         commonInit()
         if (FMLEnvironment.dist.isClient)

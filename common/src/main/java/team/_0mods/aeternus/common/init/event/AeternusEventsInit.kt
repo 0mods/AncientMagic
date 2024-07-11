@@ -32,7 +32,7 @@ import team._0mods.aeternus.api.magic.research.ResearchRequired
 import team._0mods.aeternus.api.plugin.AeternusPlugin
 import team._0mods.aeternus.api.plugin.AeternusPluginRegistry
 import team._0mods.aeternus.common.init.AeternusCorePlugin
-import team._0mods.aeternus.common.init.registry.AeternusRegsitry
+import team._0mods.aeternus.common.init.registry.AeternusRegistry
 import team._0mods.aeternus.common.item.KnowledgeBook
 import team._0mods.aeternus.service.EtheriumHelper
 import team._0mods.aeternus.service.ResearchHelper
@@ -53,7 +53,7 @@ object AeternusEventsInit {
             val stack = player.getItemInHand(hand)
 
             if (stack.`is`(Items.BOOK)) {
-                val stackOfKNBook = ItemStack(AeternusRegsitry.knowledgeBook.get())
+                val stackOfKNBook = ItemStack(AeternusRegistry.knowledgeBook.get())
                 val stackAsItem = stackOfKNBook.item as KnowledgeBook
                 if (!player.inventory.contains(stackOfKNBook)) {
                     val etheriumCount = EtheriumHelper.getCountForPlayer(player)

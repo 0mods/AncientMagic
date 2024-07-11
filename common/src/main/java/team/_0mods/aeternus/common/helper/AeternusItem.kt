@@ -12,10 +12,10 @@ package team._0mods.aeternus.common.helper
 
 import net.minecraft.world.item.Item
 import ru.hollowhorizon.hc.common.handlers.tab
-import team._0mods.aeternus.common.init.registry.AeternusRegsitry
+import team._0mods.aeternus.common.init.registry.AeternusRegistry
 
 open class AeternusItem(props: Properties.() -> Unit = {}): Item(Properties().apply(props)) {
     init {
-        this.tab(AeternusRegsitry.aeternusTab.get())
+        this.tab(AeternusRegistry.aeternusTab.get())
     }
 }

@@ -15,7 +15,7 @@ import org.slf4j.Marker
 import team._0mods.aeternus.common.commonConfig
 import team._0mods.aeternus.service.PlatformHelper
 
-private val dm = commonConfig.debug.value
+private val dm = commonConfig().debug.value
 
 fun Logger.debugIfEnabled(msg: String) {
     if (dm || !PlatformHelper.isProd()) this.info("[DEBUG MODE] $msg")

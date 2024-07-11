@@ -22,10 +22,10 @@ import net.minecraft.world.level.block.state.StateDefinition
 import net.minecraft.world.level.material.FlowingFluid
 import net.minecraft.world.level.material.Fluid
 import net.minecraft.world.level.material.FluidState
-import team._0mods.aeternus.common.init.registry.AeternusRegsitry
+import team._0mods.aeternus.common.init.registry.AeternusRegistry
 
 abstract class LiquidEtherium: FlowingFluid() {
-    override fun getBucket(): Item = AeternusRegsitry.etheriumBucket.get()
+    override fun getBucket(): Item = AeternusRegistry.etheriumBucket.get()
 
     override fun canBeReplacedWith(
         state: FluidState,
@@ -39,11 +39,11 @@ abstract class LiquidEtherium: FlowingFluid() {
 
     override fun getExplosionResistance(): Float = 100F
 
-    override fun createLegacyBlock(state: FluidState): BlockState = AeternusRegsitry.liquidEtheriumBlock.get().defaultBlockState().setValue(LiquidBlock.LEVEL, getLegacyLevel(state))
+    override fun createLegacyBlock(state: FluidState): BlockState = AeternusRegistry.liquidEtheriumBlock.get().defaultBlockState().setValue(LiquidBlock.LEVEL, getLegacyLevel(state))
 
-    override fun getFlowing(): Fluid = AeternusRegsitry.etheriumFlowing.get()
+    override fun getFlowing(): Fluid = AeternusRegistry.etheriumFlowing.get()
 
-    override fun getSource(): Fluid = AeternusRegsitry.liquidEtherium.get()
+    override fun getSource(): Fluid = AeternusRegistry.liquidEtherium.get()
 
     override fun canConvertToSource(level: Level): Boolean = level.gameRules.getBoolean(GameRules.RULE_WATER_SOURCE_CONVERSION)
 

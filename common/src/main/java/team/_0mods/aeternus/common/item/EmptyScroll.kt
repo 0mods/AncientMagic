@@ -12,10 +12,10 @@ package team._0mods.aeternus.common.item
 
 import net.minecraft.world.item.Item
 import ru.hollowhorizon.hc.common.handlers.tab
-import team._0mods.aeternus.common.init.registry.AeternusRegsitry
+import team._0mods.aeternus.common.init.registry.AeternusRegistry
 
 class EmptyScroll : Item(Properties()) {
     init {
-        this.tab(AeternusRegsitry.spellTab.get())
+        this.tab(AeternusRegistry.spellTab.get())
     }
 }

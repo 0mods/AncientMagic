@@ -12,6 +12,8 @@
 
 package team._0mods.aeternus
 
+import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup
+import team._0mods.aeternus.api.tab._tabCallback
 import team._0mods.aeternus.common.LOGGER
 import team._0mods.aeternus.common.clientInit
 import team._0mods.aeternus.common.commonInit
@@ -19,6 +21,11 @@ import team._0mods.aeternus.common.commonInit
 fun startCommon() {
     LOGGER.info("Hello Minecraft world from Common side!")
     commonInit()
+    val builder = FabricItemGroup.builder()
+    _tabCallback = {
+        builder.apply(it)
+        builder.build()
+    }
 }
 
 fun startClient() {

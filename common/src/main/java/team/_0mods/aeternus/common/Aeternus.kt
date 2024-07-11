@@ -20,29 +20,23 @@ import team._0mods.aeternus.api.config.prefix
 import team._0mods.aeternus.api.util.debugIfEnabled
 import team._0mods.aeternus.common.init.config.AeternusClientConfig
 import team._0mods.aeternus.common.init.config.AeternusCommonConfig
-import team._0mods.aeternus.common.init.registry.AeternusRegsitry
+import team._0mods.aeternus.common.init.registry.AeternusRegistry
 
 const val ModId = "aeternus"
 const val ModName = "Aeternus"
 
 @JvmField val LOGGER: Logger = LoggerFactory.getLogger(ModName) //const
 
-lateinit var commonConfigInstance: ConfigInstance<AeternusCommonConfig> private set
-lateinit var clientConfigInstance: ConfigInstance<AeternusClientConfig> private set
-
-lateinit var commonConfig: AeternusCommonConfig private set
-lateinit var clientConfig: AeternusClientConfig private set
+lateinit var commonConfig: ConfigInstance<AeternusCommonConfig> private set
+lateinit var clientConfig: ConfigInstance<AeternusClientConfig> private set
 
 fun commonInit() {
-    commonConfigInstance = loadConfig(AeternusCommonConfig.defaultConfig, prefix("common"))
-    clientConfigInstance = loadConfig(AeternusClientConfig.defaultConfig, prefix("client"))
-
-    commonConfig = commonConfigInstance()
-    clientConfig = clientConfigInstance()
+    commonConfig = loadConfig(AeternusCommonConfig.defaultConfig, prefix("common"))
+    clientConfig = loadConfig(AeternusClientConfig.defaultConfig, prefix("client"))
 
     LOGGER.debugIfEnabled("DEBUG MODE IS ACTIVATED")
 
-    AeternusRegsitry.init()
+    AeternusRegistry.init()
 }
 
 fun clientInit() {

@@ -18,15 +18,12 @@ import ru.hollowhorizon.hc.client.imgui.DockingHelper
 import team._0mods.aeternus.api.client.AeternusImGuiScreen
 import team._0mods.aeternus.api.util.imguiTranslate
 import team._0mods.aeternus.common.commonConfig
-import team._0mods.aeternus.common.commonConfigInstance
 import team._0mods.aeternus.common.init.config.AeternusCommonConfig
 
 fun configScreen() = AeternusImGuiScreen(false) {
-    val fileName = commonConfigInstance.fileName
+    val fileName = commonConfig.fileName
     val defaultConfig = AeternusCommonConfig()
-    val currentConfig = commonConfig
 
-//    ImGui.setNextWindowSize(width, height)
     if (ImGui.begin("##", ImBoolean(true))) {
         ImGui.setCursorPos(25F, 40F)
         if (ImGui.beginChild(1, 190F, 695F, true)) {

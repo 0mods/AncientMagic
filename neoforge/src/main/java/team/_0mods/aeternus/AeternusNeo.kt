@@ -10,9 +10,11 @@
 
 package team._0mods.aeternus
 
+import net.minecraft.world.item.CreativeModeTab
 import net.neoforged.bus.api.IEventBus
 import net.neoforged.fml.common.Mod
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent
+import team._0mods.aeternus.api.tab._tabCallback
 import team._0mods.aeternus.common.ModId
 import team._0mods.aeternus.common.clientInit
 import team._0mods.aeternus.common.commonInit
@@ -21,6 +23,11 @@ import team._0mods.aeternus.common.commonInit
 class AeternusNeo(bus: IEventBus) {
     init {
         commonInit()
+        val creativeTab = CreativeModeTab.builder()
+        _tabCallback = {
+            creativeTab.apply(it)
+            creativeTab.build()
+        }
         bus.addListener(this::initClient)
     }
 

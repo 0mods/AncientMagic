@@ -1,6 +1,7 @@
 package team._0mods.aeternus.common.init.event
 
 import net.minecraft.client.Minecraft
+import ru.hollowhorizon.hc.client.render.shaders.RegisterHollowShadersEvent
 import ru.hollowhorizon.hc.common.events.SubscribeEvent
 import ru.hollowhorizon.hc.common.events.registry.RegisterKeyBindingsEvent
 import ru.hollowhorizon.hc.common.events.tick.TickEvent
@@ -22,4 +23,8 @@ object AeternusClientEventsInit {
     fun onKeyRegister(e: RegisterKeyBindingsEvent) {
         registries.forEach(e::registerKeyMapping)
     }
+
+    @JvmStatic
+    @SubscribeEvent(clientSideOnly = true)
+    fun onShaderRegister(e: RegisterHollowShadersEvent) {}
 }
