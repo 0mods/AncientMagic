@@ -50,6 +50,9 @@ class DoubleResourceLocation(var id: ResourceLocation, val value: ResourceLocati
 
 fun resloc(id: String, path: String) = ResourceLocation.fromNamespaceAndPath(id, path)
 
+val String.aeternus
+    get() = "$ModId:$this"
+
 val String.aRl: ResourceLocation
     get() = "$ModId:$this".rl
 

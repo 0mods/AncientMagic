@@ -1,19 +1,14 @@
 {
   "required": true,
   "minVersion": "0.8",
-  "package": "team._0mods.aeternus.platformredirect.mixin",
+  "package": "team._0mods.aeternus.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
-    "ComponentMixin",
-    "PlayerMixin",
-    "ResourceLocationMixin",
-    "accessors.ListTagAccessor",
-    "team._0mods.aeternus.mixin.entity.AnimalMixin",
-    "team._0mods.aeternus.mixin.item.ItemMixin"
+    "entity.AnimalMixin",
+    "item.ItemMixin"
   ],
   "client": [
-    "accessors.client.ScreenAccessor",
-    "accessors.client.ShaderInstanceAccessor"
+    "accessor.PlayerModelAccessor"
   ],
   "injectors": {
     "defaultRequire": 1

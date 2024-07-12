@@ -32,7 +32,6 @@ lateinit var clientConfig: ConfigInstance<AeternusClientConfig> private set
 
 fun commonInit() {
     commonConfig = loadConfig(AeternusCommonConfig.defaultConfig, prefix("common"))
-    clientConfig = loadConfig(AeternusClientConfig.defaultConfig, prefix("client"))
 
     LOGGER.debugIfEnabled("DEBUG MODE IS ACTIVATED")
 
@@ -40,4 +39,5 @@ fun commonInit() {
 }
 
 fun clientInit() {
+    clientConfig = loadConfig(AeternusClientConfig.defaultConfig, prefix("client"))
 }
