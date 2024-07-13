@@ -16,6 +16,6 @@ import team._0mods.aeternus.common.init.registry.AeternusRegistry
 
 open class AeternusItem(props: Properties.() -> Unit = {}): Item(Properties().apply(props)) {
     init {
-        this.tab(AeternusRegistry.aeternusTab.get())
+        this.tab(AeternusRegistry.miscTab.get())
     }
 }

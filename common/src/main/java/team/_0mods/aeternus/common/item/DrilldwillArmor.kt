@@ -34,7 +34,7 @@ class DrilldwillArmor(type: Type, properties: Properties) : ArmorItem(material, 
 
     init {
         EventBus.register(this::onPlayerTick)
-        this.tab(AeternusRegistry.aeternusTab.get())
+        this.tab(AeternusRegistry.miscTab.get())
     }
 
     companion object {

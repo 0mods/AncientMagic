@@ -14,14 +14,13 @@ import net.minecraft.core.registries.BuiltInRegistries
 import net.minecraft.core.registries.Registries
 import net.minecraft.network.chat.Component
 import net.minecraft.resources.ResourceKey
-import net.minecraft.world.item.ArmorItem
-import net.minecraft.world.item.BucketItem
-import net.minecraft.world.item.Item
-import net.minecraft.world.item.ItemStack
+import net.minecraft.world.item.*
+import net.minecraft.world.level.block.Block
 import net.minecraft.world.level.block.SoundType
 import net.minecraft.world.level.block.state.BlockBehaviour
 import net.minecraft.world.level.material.Fluids
 import net.minecraft.world.level.material.PushReaction
+import ru.hollowhorizon.hc.common.handlers.tab
 import ru.hollowhorizon.hc.common.registry.HollowRegistry
 import team._0mods.aeternus.api.block.PublicLiquidBlock
 import team._0mods.aeternus.api.tab.AeternusTabCreator
@@ -29,13 +28,16 @@ import team._0mods.aeternus.api.util.aRl
 import team._0mods.aeternus.common.ModId
 import team._0mods.aeternus.common.fluid.LiquidEtherium
 import team._0mods.aeternus.common.helper.AeternusItem
+import team._0mods.aeternus.common.item.AeternusIngots
+import team._0mods.aeternus.common.item.AeternusIngots.Companion.convertBlockName
+import team._0mods.aeternus.common.item.AeternusIngots.Companion.convertName
 import team._0mods.aeternus.common.item.DrilldwillArmor
 import team._0mods.aeternus.common.item.EmptyScroll
 import team._0mods.aeternus.common.item.KnowledgeBook
 
 object AeternusRegistry: HollowRegistry() {
     /* TABS */
-    val aeternusTab by register("aeternus_tab".aRl, false, BuiltInRegistries.CREATIVE_MODE_TAB) {
+    val miscTab by register("misc_tab".aRl, false, BuiltInRegistries.CREATIVE_MODE_TAB) {
         AeternusTabCreator.create {
             title(tab("misc")).icon { ItemStack(knowledgeBook.get()) }
         }
@@ -99,6 +101,27 @@ object AeternusRegistry: HollowRegistry() {
 
     @JvmStatic
     fun init() {
+        AeternusIngots.entries.forEach {
+            if (it.generateBlock) {
+                val id = it.convertBlockName
+                val b by register(id.aRl, it.autoModel, BuiltInRegistries.BLOCK) {
+                    Block(
+                        BlockBehaviour.Properties.of()
+                            .noOcclusion()
+                            .strength(3F, 50F)
+                    )
+                }
+
+                register(id.aRl, it.autoModel, BuiltInRegistries.ITEM) {
+                    BlockItem(b.get(), Item.Properties()).tab(miscTab.get())
+                }
+            }
+
+            val id = it.convertName
+            val reg by register(id.aRl, it.autoModel, BuiltInRegistries.ITEM, it.item)
+
+            it.item = { reg.get() }
+        }
     }
 
     private fun tab(id: String): Component = Component.translatable("itemGroup.$ModId.$id")
