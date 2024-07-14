@@ -11,6 +11,7 @@
 package team._0mods.aeternus.mixin
 
 import net.minecraft.world.item.Rarity
+import net.minecraft.world.level.pathfinder.PathType
 import net.minecraftforge.common.extensions.IForgeFluid
 import net.minecraftforge.fluids.FluidType
 import org.spongepowered.asm.mixin.Mixin
@@ -23,5 +24,14 @@ class LiquidEtheriumMixin: IForgeFluid {
             .canSwim(true)
             .lightLevel(1)
             .rarity(Rarity.EPIC)
+            .canHydrate(false)
+            .canConvertToSource(false)
+            .pathType(PathType.WATER)
+            .lightLevel(8)
+            .canPushEntity(true)
+            .canDrown(true)
+            .adjacentPathType(PathType.WATER)
+            .density(10)
+            .canExtinguish(true)
     )
 }
