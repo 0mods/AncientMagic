@@ -24,7 +24,7 @@ class LiquidEtheriumMixin: IForgeFluid {
             .canSwim(true)
             .lightLevel(1)
             .rarity(Rarity.EPIC)
-            .canHydrate(false)
+            .canHydrate(true)
             .canConvertToSource(false)
             .pathType(PathType.WATER)
             .lightLevel(8)
