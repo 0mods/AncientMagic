@@ -1,12 +1,14 @@
 package team._0mods.aeternus.common.item
 
+import net.minecraft.world.level.block.Block
+import net.minecraft.world.level.block.state.BlockBehaviour
 import team._0mods.aeternus.common.item.base.IngotItem
 
 enum class AeternusIngots(
     val customId: String = "",
-    val generateBlock: Boolean = true,
     val autoModel: Boolean = true,
-    var item: () -> IngotItem = { IngotItem() } // changes on registry
+    var block: (() -> Block)? = { Block(BlockBehaviour.Properties.of()) }, // changed by registry
+    var item: () -> IngotItem = { IngotItem() } // changed by registry
 ) {
     ADAMANTINE,
     DAEMONITE,

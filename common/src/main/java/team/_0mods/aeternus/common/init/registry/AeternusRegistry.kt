@@ -15,7 +15,6 @@ import net.minecraft.core.registries.Registries
 import net.minecraft.network.chat.Component
 import net.minecraft.resources.ResourceKey
 import net.minecraft.world.item.*
-import net.minecraft.world.level.block.Block
 import net.minecraft.world.level.block.SoundType
 import net.minecraft.world.level.block.state.BlockBehaviour
 import net.minecraft.world.level.material.Fluids
@@ -102,25 +101,21 @@ object AeternusRegistry: HollowRegistry() {
     @JvmStatic
     fun init() {
         AeternusIngots.entries.forEach {
-            if (it.generateBlock) {
+            if (it.block != null) {
                 val id = it.convertBlockName
-                val b by register(id.aRl, it.autoModel, BuiltInRegistries.BLOCK) {
-                    Block(
-                        BlockBehaviour.Properties.of()
-                            .noOcclusion()
-                            .strength(3F, 50F)
-                    )
-                }
+                val b by register(id.aRl, it.autoModel, BuiltInRegistries.BLOCK, it.block!!)
 
                 register(id.aRl, it.autoModel, BuiltInRegistries.ITEM) {
                     BlockItem(b.get(), Item.Properties()).tab(miscTab.get())
                 }
+
+                it.block = b::get
             }
 
             val id = it.convertName
             val reg by register(id.aRl, it.autoModel, BuiltInRegistries.ITEM, it.item)
 
-            it.item = { reg.get() }
+            it.item = reg::get
         }
     }
 
