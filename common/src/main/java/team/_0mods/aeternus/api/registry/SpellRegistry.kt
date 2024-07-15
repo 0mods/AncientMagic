@@ -10,21 +10,21 @@
 
 package team._0mods.aeternus.api.registry
 
+import net.minecraft.resources.ResourceLocation
 import org.jetbrains.annotations.ApiStatus
 import team._0mods.aeternus.api.magic.spell.Spell
-import team._0mods.aeternus.api.util.mcemulate.MCResourceLocation
 
 interface SpellRegistry {
     val spells: List<Spell>
 
-    fun getById(id: MCResourceLocation): Spell?
+    fun getById(id: ResourceLocation): Spell?
 
-    fun getId(spell: Spell): MCResourceLocation
+    fun getId(spell: Spell): ResourceLocation
 
     fun <T: Spell> register(id: String, spell: T): T
 
     @ApiStatus.Experimental
-    fun <T: Spell> register(id: MCResourceLocation, spell: T): T
+    fun <T: Spell> register(id: ResourceLocation, spell: T): T
 
     fun registerAll(vararg spells: Pair<String, Spell>) {
         spells.forEach {
@@ -35,7 +35,7 @@ interface SpellRegistry {
     }
 
     @ApiStatus.Experimental
-    fun registerAllRl(vararg spells: Pair<MCResourceLocation, Spell>) {
+    fun registerAllRl(vararg spells: Pair<ResourceLocation, Spell>) {
         spells.forEach {
             val id = it.first
             val research = it.second
@@ -43,5 +43,5 @@ interface SpellRegistry {
         }
     }
 
-    fun getByIdList(id: List<MCResourceLocation>): List<Spell>
+    fun getByIdList(id: List<ResourceLocation>): List<Spell>
 }

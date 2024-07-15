@@ -1,22 +1,21 @@
 package team._0mods.aeternus.api.magic.research
 
-import team._0mods.aeternus.api.util.mcemulate.MCPlayer
-import team._0mods.aeternus.platformredirect.api.util.asPlayer
+import net.minecraft.world.entity.player.Player
 import team._0mods.aeternus.service.ResearchHelper as RedirectHelper
 
 object ResearchHelper {
     @JvmStatic
-    val MCPlayer.researches: List<Research>
-        get() = RedirectHelper.getResearches(this.asPlayer)
+    val Player.researches: List<Research>
+        get() = RedirectHelper.getResearches(this)
 
     @JvmStatic
-    fun MCPlayer.hasResearch(research: Research) = RedirectHelper.hasResearch(this.asPlayer, research)
+    fun Player.hasResearch(research: Research) = RedirectHelper.hasResearch(this, research)
 
     @JvmStatic
-    fun MCPlayer.hasResearches(vararg researches: Research) = RedirectHelper.hasResearches(this.asPlayer, *researches)
+    fun Player.hasResearches(vararg researches: Research) = RedirectHelper.hasResearches(this, *researches)
 
     @JvmStatic
-    fun MCPlayer.addResearch(vararg researches: Research) = RedirectHelper.addResearch(this.asPlayer, *researches)
+    fun Player.addResearch(vararg researches: Research) = RedirectHelper.addResearch(this, *researches)
 
-    fun MCPlayer.canOpen(research: Research) = RedirectHelper.canOpen(this.asPlayer, research)
+    fun Player.canOpen(research: Research) = RedirectHelper.canOpen(this, research)
 }

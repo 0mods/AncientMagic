@@ -22,12 +22,10 @@
 
   "depends": {
     "fabricloader": ">=${fabricLoaderVersion}",
-    "cloth-config": ">=${clothVersion}",
     "fabric": "*",
     "minecraft": "${minecraftVersion}",
-    "java": ">=17",
-//    "fabric-language-kotlin": ">=${klfVersion}",
-    "architectury": ">=${architecturyApiVersion}"
+    "java": ">=21",
+    "hollowcore": "*"
   },
   "accessWidener": "${modId}.accesswidener"
 }

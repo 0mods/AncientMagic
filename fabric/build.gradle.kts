@@ -33,8 +33,6 @@ configurations {
 dependencies {
     val fabricLoaderVersion: String by rootProject
     val fabricVersion: String by rootProject
-    val architecturyApiVersion: String by rootProject
-    val clothVersion: String by rootProject
     val imguiVersion: String by project
     val coroutinesVersion: String by project
     val serializationVersion: String by project
